@@ -1,0 +1,10 @@
+@function variables() {
+    $variables: (
+        "bg": #000000,
+        "title": #f2f2f2,
+        "primary": #ff1929,
+        "secondary": #148ac4
+    );
+
+    @return $variables;
+}

@@ -1,0 +1,22 @@
+@import "./theme/colors.scss";
+
+$themeMaps: (
+  "rog": (
+    "primary": #ff0000,
+    "secondary": #00ff00,
+    "title": #0000ff
+  )
+);
+
+h1 {
+  font-size: 50px;
+
+  @include useColorVariables {
+    background-color: themeColor("primary");
+    color: themeColor("title");
+
+    &:hover {
+      background-color: themeColor("secondary");
+    }
+  }
+}

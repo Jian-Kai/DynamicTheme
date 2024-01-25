@@ -1,0 +1,29 @@
+@use "./rog.scss" as rog;
+@use "./tuf.scss" as tuf;
+@use "./light.scss" as light;
+
+$themeMaps: (
+    "rog": rog.variables(),
+    "tuf": tuf.variables(),
+    "light": light.variables()
+) !default;
+
+@mixin useColorVariables() {
+    @media (prefers-color-scheme: dark) {
+        @each $theme, $colorMap in $themeMaps {
+            $currentMap: $colorMap !global;
+            body.#{$theme} & {
+                @content;
+            }
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        $currentMap: light.variables() !global;
+        @content;
+    }
+}
+
+@function themeColor($key) {
+    @return map-get($currentMap, $key);
+}
