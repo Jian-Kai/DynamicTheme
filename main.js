@@ -27,7 +27,11 @@ if (!isModelApp) {
     document.body.append(...buttons);
 } else {
     h1.innerText = 'Switch From System'
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    document.body.className = prefersColorScheme.matches ? currentTheme : 'light';
+
+    prefersColorScheme.addEventListener('change', e => {
         document.body.className = e.matches ? currentTheme : 'light';
     });
 }
