@@ -15,14 +15,6 @@ $themeMaps: (
             @content;
         }
     }
-
-    // @media (prefers-color-scheme: dark) {
-    // }
-
-    // @media (prefers-color-scheme: light) {
-    //     $currentMap: light.variables() !global;
-    //     @content;
-    // }
 }
 
 @function themeColor($key) {

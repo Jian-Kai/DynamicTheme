@@ -2,8 +2,10 @@ import './style.scss'
 
 // get query string for href and check if it has isModelApp param
 const queryString = new URLSearchParams(window.location.search)
-const isModelApp = queryString.get('isModelApp') === 'true';
-const currentTheme = queryString.get('theme');
+const isModelApp = queryString.get('isElectron') === '1';
+const currentTheme = queryString.get('theme') || 'rog';
+
+console.log(currentTheme);
 
 document.body.className = currentTheme;
 
@@ -26,10 +28,7 @@ if (!isModelApp) {
 } else {
     h1.innerText = 'Switch From System'
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        console.log(e.matches ? 'dark' : 'light')
-
-        const newColorScheme = e.matches ? currentTheme : 'light';
-        document.body.className = newColorScheme;
+        document.body.className = e.matches ? currentTheme : 'light';
     });
 }
 
