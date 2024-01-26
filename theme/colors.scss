@@ -9,19 +9,20 @@ $themeMaps: (
 ) !default;
 
 @mixin useColorVariables() {
-    @media (prefers-color-scheme: dark) {
-        @each $theme, $colorMap in $themeMaps {
-            $currentMap: $colorMap !global;
-            body.#{$theme} & {
-                @content;
-            }
+    @each $theme, $colorMap in $themeMaps {
+        $currentMap: $colorMap !global;
+        body.#{$theme} & {
+            @content;
         }
     }
 
-    @media (prefers-color-scheme: light) {
-        $currentMap: light.variables() !global;
-        @content;
-    }
+    // @media (prefers-color-scheme: dark) {
+    // }
+
+    // @media (prefers-color-scheme: light) {
+    //     $currentMap: light.variables() !global;
+    //     @content;
+    // }
 }
 
 @function themeColor($key) {
